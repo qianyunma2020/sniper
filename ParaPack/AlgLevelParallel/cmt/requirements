@@ -1,0 +1,16 @@
+package AlgLevelParallel
+
+use SniperKernel    v*
+use Boost           v*   Externals
+use tbb             v*   Externals
+use jsoncpp         v*   Externals
+
+macro_append AlgLevelParallel_use_linkopts " -lrt -L./lib -lboost_system -pthread -fPIC"
+
+
+library AlgLevelParallel *.cc
+
+apply_pattern install_python_modules          
+apply_pattern install_more_includes more=AlgLevelParallel
+apply_pattern linker_library library="AlgLevelParallel"
+
